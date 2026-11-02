@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass
+from typing import Any
 
 import numpy as np
 import torch
@@ -137,9 +138,9 @@ def finetune(backbone: nn.Module, data_images: np.ndarray, labels: np.ndarray,
         loss.backward()
         opt.step()
     train_s = time.perf_counter() - t0
-    out = {"train_s": train_s, "final_loss": float(loss)}
-    for split, idx in (("val", val_idx), ("test", test_idx)):
-        f = extract(model, data_images[idx], dev, size=cfg.input_size)
-        out[f"{split}_acc"] = float((f.argmax(1) == torch.from_numpy(labels[idx])).float().mean())
+    out: dict[str, Any] = {"train_s": train_s, "final_loss": float(loss)}
+    for split, sidx in (("val", val_idx), ("test", test_idx)):
+        f = extract(model, data_images[sidx], dev, size=cfg.input_size)
+        out[f"{split}_acc"] = float((f.argmax(1) == torch.from_numpy(labels[sidx])).float().mean())
         out[f"{split}_pred"] = f.argmax(1).tolist() if split == "test" else None
     return out

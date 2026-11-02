@@ -9,7 +9,7 @@ checkpoints/
 *.pt
 *.pth
 *.npy
-*.npz
+
 *.safetensors
 .mypy_cache/
 .pytest_cache/
