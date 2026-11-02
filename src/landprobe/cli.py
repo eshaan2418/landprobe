@@ -49,7 +49,12 @@ def cmd_classify(a: argparse.Namespace) -> int:
     mu, sd = ftr.mean(0), ftr.std(0) + 1e-6
     clf = _fit_linear((ftr - mu) / sd, torch.from_numpy(data.labels[sub]), wd=a.wd)
     fit_s = time.perf_counter() - t0
-    imgs, names = _load_images(Path(a.images))
+    if a.images.startswith("split:"):
+        split = a.images.split(":", 1)[1]
+        idx = np.random.default_rng(a.seed).choice(data.splits[split], a.n, replace=False)
+        imgs, names = data.images[np.sort(idx)], [data.names[i] for i in np.sort(idx)]
+    else:
+        imgs, names = _load_images(Path(a.images))
     with torch.no_grad():
         p = torch.softmax(clf((extract(bb, imgs, dev) - mu) / sd), 1)
     print(f"linear probe fit on {len(sub)} labelled tiles in {fit_s:.1f}s\n")
@@ -65,7 +70,9 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="landprobe")
     sub = ap.add_subparsers(dest="cmd", required=True)
     c = sub.add_parser("classify", help="few-label land-use classification")
-    c.add_argument("images")
+    c.add_argument("images", help="folder / image / .npz, or split:test for random test tiles")
+    c.add_argument("--n", type=int, default=10)
+    c.add_argument("--seed", type=int, default=0)
     c.add_argument("--backbone", default="runs/simclr_e40_s0/backbone.pt")
     c.add_argument("--labels-frac", type=float, default=0.01, choices=[0.01, 0.05, 0.1, 1.0])
     c.add_argument("--wd", type=float, default=1e-2)

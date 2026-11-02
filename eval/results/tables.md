@@ -35,21 +35,23 @@ Fixed recipe for every backbone: AdamW lr 1e-3, wd 0.05, batch 128, cosine; 1%: 
 
 | backbone | 1% (162) | 10% (1620) | 100% (16200) |
 |---|---|---|---|
-| supervised from scratch | 73.5 ± nan | 88.3 ± nan | 93.5 ± nan |
-| ImageNet ResNet-18 @128px | 88.6 ± nan | 95.9 ± nan | - |
+| supervised from scratch | 73.7 ± 1.5 | 88.1 ± 0.5 | 93.6 ± 0.8 |
+| ImageNet ResNet-18 @128px | 88.5 ± 2.4 | 95.8 ± 0.6 | 97.8 ± 0.4 |
+| SimCLR (ours, EuroSAT) | 80.7 ± 0.5 | 92.5 ± 0.3 | 95.7 ± 0.5 |
+| BYOL (ours, EuroSAT) | 77.2 ± 2.2 | 90.4 ± 0.8 | 94.7 ± 1.0 |
 
-- fine-tune Δ SimCLR (ours, EuroSAT) − supervised from scratch: 1%: -, 10%: -, 100%: -
-- fine-tune Δ SimCLR (ours, EuroSAT) − ImageNet ResNet-18 @128px: 1%: -, 10%: -, 100%: -
-- fine-tune Δ BYOL (ours, EuroSAT) − supervised from scratch: 1%: -, 10%: -, 100%: -
-- fine-tune Δ BYOL (ours, EuroSAT) − ImageNet ResNet-18 @128px: 1%: -, 10%: -, 100%: -
+- fine-tune Δ SimCLR (ours, EuroSAT) − supervised from scratch: 1%: +6.9 ± 1.0, 10%: +4.4 ± 0.5, 100%: +2.1 ± 0.5
+- fine-tune Δ SimCLR (ours, EuroSAT) − ImageNet ResNet-18 @128px: 1%: -7.8 ± 1.9, 10%: -3.3 ± 0.8, 100%: -2.1 ± 0.3
+- fine-tune Δ BYOL (ours, EuroSAT) − supervised from scratch: 1%: +3.5 ± 0.8, 10%: +2.3 ± 0.3, 100%: +1.1 ± 1.7
+- fine-tune Δ BYOL (ours, EuroSAT) − ImageNet ResNet-18 @128px: 1%: -11.3 ± 1.5, 10%: -5.4 ± 1.0, 100%: -3.1 ± 0.9
 
-Fine-tune wall-clock per run (s): imagenet128@1% 172; imagenet128@10% 173; random@1% 113; random@10% 111; random@100% 219
+Fine-tune wall-clock per run (s): byol@1% 104; byol@10% 102; byol@100% 205; imagenet128@1% 168; imagenet128@10% 166; imagenet128@100% 332; random@1% 106; random@10% 106; random@100% 214; simclr@1% 104; simclr@10% 104; simclr@100% 207
 
-### Error analysis: ImageNet ResNet-18 @128px fine-tuned on 1% labels (test predictions summed over 1 seeds)
+### Error analysis: ImageNet ResNet-18 @128px fine-tuned on 1% labels (test predictions summed over 3 seeds)
 
-Per-class recall: HerbaceousVegetation 75%, Pasture 80%, PermanentCrop 82%, Highway 89%, AnnualCrop 90%, River 90%, Industrial 93%, SeaLake 93%, Residential 94%, Forest 97%
+Per-class recall: HerbaceousVegetation 80%, River 84%, PermanentCrop 84%, AnnualCrop 86%, Pasture 86%, Highway 87%, SeaLake 92%, Industrial 93%, Residential 95%, Forest 97%
 
-Most frequent confusions (true -> predicted, count): Pasture -> River 56; HerbaceousVegetation -> PermanentCrop 49; PermanentCrop -> HerbaceousVegetation 42; AnnualCrop -> PermanentCrop 37; HerbaceousVegetation -> Pasture 31; SeaLake -> Forest 28
+Most frequent confusions (true -> predicted, count): AnnualCrop -> PermanentCrop 137; HerbaceousVegetation -> PermanentCrop 123; PermanentCrop -> HerbaceousVegetation 106; River -> Highway 95; HerbaceousVegetation -> Residential 77; River -> AnnualCrop 71
 
 ## Pretraining runs
 

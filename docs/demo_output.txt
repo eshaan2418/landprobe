@@ -1,0 +1,12 @@
+linear probe fit on 162 labelled tiles in 0.2s
+
+AnnualCrop/AnnualCrop_1441.jpg                AnnualCrop 0.97, PermanentCrop 0.03, HerbaceousVegetation 0.01
+AnnualCrop/AnnualCrop_2036.jpg                AnnualCrop 1.00, River 0.00, HerbaceousVegetation 0.00
+AnnualCrop/AnnualCrop_2852.jpg                PermanentCrop 0.76, AnnualCrop 0.12, Highway 0.11
+Forest/Forest_2554.jpg                        Forest 1.00, Pasture 0.00, Highway 0.00
+HerbaceousVegetation/HerbaceousVegetation_2228.jpg Pasture 0.86, HerbaceousVegetation 0.10, PermanentCrop 0.04
+HerbaceousVegetation/HerbaceousVegetation_353.jpg HerbaceousVegetation 0.94, Pasture 0.04, PermanentCrop 0.01
+Industrial/Industrial_771.jpg                 Industrial 0.94, River 0.02, Highway 0.02
+PermanentCrop/PermanentCrop_2078.jpg          PermanentCrop 1.00, AnnualCrop 0.00, Pasture 0.00
+River/River_1395.jpg                          River 1.00, Highway 0.00, AnnualCrop 0.00
+River/River_2278.jpg                          River 0.95, Highway 0.04, AnnualCrop 0.01

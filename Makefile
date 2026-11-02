@@ -25,7 +25,7 @@ plots:
 	$(PY) scripts/make_tables.py
 
 demo:
-	$(PY) -m landprobe.cli classify tests/fixtures/eurosat_tiny.npz --backbone runs/simclr_e40_s0/backbone.pt
+	$(PY) -m landprobe.cli classify split:test --n 10 --backbone runs/simclr_e40_s0/backbone.pt
 
 smoke:
 	$(PY) -m pytest -q tests/test_smoke.py
