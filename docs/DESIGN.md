@@ -17,11 +17,12 @@ EuroSAT zip (MD5) -> uint8 array (27k x 3 x 64 x 64, 317 MB) -> stratified split
 2. **Dihedral augmentation.** Overhead imagery has no canonical orientation, so all 8
    rotations and reflections preserve the label. This is a domain-specific change to the
    SimCLR recipe, which uses horizontal flips only.
-3. **Stem choice from measurement.** Training throughput at batch 256 on the M5:
-   3x3 stride-1 stem without max-pool 407 img/s, with max-pool 1,303 img/s, stock 7x7/2 +
-   pool 3,079 img/s (`scripts/bench_throughput.py`). The pooled 3x3 stem keeps 32x32 spatial
-   resolution in layer1 for 64 px tiles at 3.2x the speed of the unpooled one.
-   `channels_last` was slower on MPS in every configuration and is not used.
+3. **Stem choice from measurement.** Training throughput at batch 256 on the M5
+   (`eval/results/bench/throughput.json`): 3x3 stride-1 stem without max-pool 335 img/s,
+   with max-pool 1,204 img/s, stock 7x7/2 + pool 2,975 img/s. The pooled 3x3 stem keeps
+   32x32 spatial resolution in layer1 for 64 px tiles at 3.6x the speed of the unpooled one.
+   `channels_last` was slower on MPS in every configuration (e.g. 489 vs 1,204 img/s) and
+   is not used. The benchmark ran while CPU-only jobs used other cores.
 4. **AdamW for SSL.** SimCLR/BYOL papers use LARS at batch 4096. At batch 256 on one device,
    AdamW with cosine decay is the common small-scale substitute. Both methods use identical
    optimiser settings.

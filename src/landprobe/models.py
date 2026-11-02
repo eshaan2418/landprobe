@@ -1,8 +1,8 @@
 """Backbones and heads.
 
 ``resnet18_small``: ResNet-18 with a 3x3 stride-1 stem followed by the usual max-pool, so a 64x64
-tile enters layer1 at 32x32. A stride-1 stem without the pool is 3.2x slower on MPS in our
-measurement (407 vs 1,303 img/s training throughput, batch 256) for a 64x64 input.
+tile enters layer1 at 32x32. A stride-1 stem without the pool is 3.6x slower on MPS
+(335 vs 1,204 img/s training throughput at batch 256, eval/results/bench/throughput.json).
 
 ``resnet18_imagenet``: the stock torchvision ResNet-18 with ImageNet-1k weights (baseline).
 """

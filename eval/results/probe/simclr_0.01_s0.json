@@ -1,0 +1,24 @@
+{
+  "backbone": "simclr",
+  "input_size": 64,
+  "fraction": 0.01,
+  "seed": 0,
+  "n_labels": 162,
+  "probe_wd": 0.1,
+  "probe_val": 0.8098148107528687,
+  "probe_test": 0.8157407641410828,
+  "probe_val_by_wd": {
+    "0.0": 0.7520370483398438,
+    "0.0001": 0.7885185480117798,
+    "0.001": 0.7916666865348816,
+    "0.01": 0.7983333468437195,
+    "0.1": 0.8098148107528687
+  },
+  "knn_val": 0.8094444444444444,
+  "knn_test": 0.8068518518518518,
+  "extract_s": 5.712870291987201,
+  "git_commit": "9ead9a810b7bbb32dfb3023dd0fffe4ac372e015",
+  "thermal": "Note: No thermal warning level has been recorded Note: No performance warning level has been recorded Note: No CPU power status has been recorded",
+  "torch": "2.14.1",
+  "peak_memory_gb": 3.300589568
+}

@@ -1,0 +1,24 @@
+{
+  "backbone": "imagenet128",
+  "input_size": 128,
+  "fraction": 1.0,
+  "seed": 2,
+  "n_labels": 16200,
+  "probe_wd": 0.001,
+  "probe_val": 0.9327777624130249,
+  "probe_test": 0.9399999976158142,
+  "probe_val_by_wd": {
+    "0.0": 0.904629647731781,
+    "0.0001": 0.9209259152412415,
+    "0.001": 0.9327777624130249,
+    "0.01": 0.9320370554924011,
+    "0.1": 0.9129629731178284
+  },
+  "knn_val": 0.8994444444444445,
+  "knn_test": 0.9051851851851852,
+  "extract_s": 7.203049000003375,
+  "git_commit": "9ead9a810b7bbb32dfb3023dd0fffe4ac372e015",
+  "thermal": "Note: No thermal warning level has been recorded Note: No performance warning level has been recorded Note: No CPU power status has been recorded",
+  "torch": "2.14.1",
+  "peak_memory_gb": 3.300589568
+}

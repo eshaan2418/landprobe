@@ -1,0 +1,39 @@
+{
+  "rows": [
+    {
+      "stem": "3x3_s1_nopool",
+      "channels_last": false,
+      "train_img_per_s": 334.90461048420605
+    },
+    {
+      "stem": "3x3_s1_nopool",
+      "channels_last": true,
+      "train_img_per_s": 144.53266961547018
+    },
+    {
+      "stem": "3x3_s1_pool",
+      "channels_last": false,
+      "train_img_per_s": 1204.2078361600159
+    },
+    {
+      "stem": "3x3_s1_pool",
+      "channels_last": true,
+      "train_img_per_s": 489.1377037266806
+    },
+    {
+      "stem": "torchvision_7x7_s2_pool",
+      "channels_last": false,
+      "train_img_per_s": 2974.59250769913
+    },
+    {
+      "stem": "torchvision_7x7_s2_pool",
+      "channels_last": true,
+      "train_img_per_s": 1816.7725188457935
+    }
+  ],
+  "batch": 256,
+  "input": 64,
+  "device": "mps",
+  "git_commit": "9ead9a810b7bbb32dfb3023dd0fffe4ac372e015",
+  "thermal": "Note: No thermal warning level has been recorded Note: No performance warning level has been recorded Note: No CPU power status has been recorded"
+}
